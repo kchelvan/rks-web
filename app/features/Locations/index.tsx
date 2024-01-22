@@ -17,7 +17,7 @@ const Locations = () => {
 			<HeaderText>Our Locations</HeaderText>
 			<ContentContainer>
 				{LOCATIONS?.map((location) => (
-					<div>
+					<div key={location?.address}>
 						<LocationImageContainer>
 							<Image
 								src={location?.image}

@@ -1,8 +1,10 @@
+'use client';
+
 import React from 'react';
 import { Button as _Button } from './index.styled';
 
-const Button = ({ children }: any) => {
-	return <_Button>{children}</_Button>;
+const Button = ({ onClick, children }: any) => {
+	return <_Button onClick={onClick}>{children}</_Button>;
 };
 
 export default Button;

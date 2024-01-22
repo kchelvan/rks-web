@@ -7,6 +7,8 @@ export const Button = styled('button')`
 	background-color: ${COLORS.buttonPrimary};
 	padding-left: 32px;
 	padding-right: 32px;
+	border-radius: 4px;
+	height: 100%;
 	border: 0;
 	box-shadow: none;
 	cursor: pointer;

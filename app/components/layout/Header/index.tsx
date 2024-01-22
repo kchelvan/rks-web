@@ -11,6 +11,7 @@ import {
 	CompanySubText,
 } from './index.styled';
 import Button from '../../ui/Button';
+import { useRouter } from 'next/navigation';
 
 const ROUTES = [
 	{
@@ -36,6 +37,8 @@ const ROUTES = [
 ];
 
 const Header = () => {
+	const router = useRouter();
+
 	return (
 		<HeaderContainer>
 			<Link href={'/'}>
@@ -51,7 +54,7 @@ const Header = () => {
 					</NavItem>
 				))}
 			</NavContainer>
-			<Button>
+			<Button onClick={() => router.push('/#locations')}>
 				<Text>Book Now</Text>
 			</Button>
 		</HeaderContainer>

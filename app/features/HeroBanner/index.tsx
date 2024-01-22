@@ -8,7 +8,6 @@ import {
 	ChevronDown,
 	ContentContainer,
 } from './index.styled';
-import { COLORS } from '../../utils/colors';
 
 const HeroBanner = () => {
 	return (
