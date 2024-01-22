@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { COLORS } from './utils/colors';
 import StyledComponentsRegistry from './lib/registry';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const raleway = Raleway({ subsets: ['latin'], weight: ['500'] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
 					margin: 0,
 				}}
 			>
+				<SpeedInsights />
 				<StyledComponentsRegistry>
 					<Header />
 					{children}
