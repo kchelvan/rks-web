@@ -15,6 +15,7 @@ const HeroBanner = () => {
 		<Container>
 			<DarkenedBG>
 				<HeroImage
+					priority={true}
 					src={HeroImagePath}
 					alt='RKS Barbers'
 					fill
