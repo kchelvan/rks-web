@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Text from '../../ui/Text';
 import {
 	Link,
@@ -9,9 +9,13 @@ import {
 	NavItem,
 	CompanyText,
 	CompanySubText,
+	StyledBurger,
+	StyledMenu,
 } from './index.styled';
 import Button from '../../ui/Button';
 import { useRouter } from 'next/navigation';
+import { useMediaQuery, useTheme } from '@mui/material';
+import Burger from './Burger';
 
 const ROUTES = [
 	{
@@ -36,8 +40,23 @@ const ROUTES = [
 	},
 ];
 
+const Menu = ({ open }: any) => {
+	return (
+		<StyledMenu open={open}>
+			{ROUTES?.map((route) => (
+				<NavItem key={route.route} href={route.route}>
+					<Text>{route.label}</Text>
+				</NavItem>
+			))}
+		</StyledMenu>
+	);
+};
+
 const Header = () => {
+	const theme = useTheme();
 	const router = useRouter();
+	const isMobileSize = useMediaQuery(theme.breakpoints.down('md'));
+	const [open, setOpen] = useState(false);
 
 	return (
 		<HeaderContainer>
@@ -47,16 +66,27 @@ const Header = () => {
 					<CompanySubText>Saloon</CompanySubText>
 				</div>
 			</Link>
-			<NavContainer>
-				{ROUTES?.map((route) => (
-					<NavItem key={route.route} href={route.route}>
-						<Text>{route.label}</Text>
-					</NavItem>
-				))}
-			</NavContainer>
-			<Button onClick={() => router.push('/#locations')}>
-				<Text>Book Now</Text>
-			</Button>
+			{isMobileSize ? (
+				<div>
+					<Burger open={open} setOpen={setOpen} />
+					<Menu open={open} setOpen={setOpen} />
+				</div>
+			) : (
+				<div>
+					<NavContainer>
+						{ROUTES?.map((route) => (
+							<NavItem key={route.route} href={route.route}>
+								<Text>{route.label}</Text>
+							</NavItem>
+						))}
+					</NavContainer>
+				</div>
+			)}
+			{!isMobileSize ? (
+				<Button onClick={() => router.push('/#locations')}>
+					<Text>Book Now</Text>
+				</Button>
+			) : null}
 		</HeaderContainer>
 	);
 };

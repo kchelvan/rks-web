@@ -2,12 +2,13 @@
 
 import styled from 'styled-components';
 import { COLORS } from '../../utils/colors';
+import { device } from '../../utils/breakpoints';
 
 export const Container = styled('div')`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 70dvh;
+	min-height: 70dvh;
 	justify-content: center;
 	align-items: center;
 	margin-left: auto;
@@ -26,6 +27,15 @@ export const ContentContainer = styled('div')`
 	flex-direction: row;
 	justify-content: space-between;
 	width: 1280px;
+
+	@media ${device.md} {
+		flex-direction: column;
+		width: 100%;
+	}
+	@media ${device.lg} {
+		flex-direction: column;
+		max-width: 900px;
+	}
 `;
 
 export const CityHeader = styled('p')`
@@ -44,7 +54,16 @@ export const LocationText = styled('p')`
 `;
 
 export const LocationImageContainer = styled('div')`
-	position: relative;
-	width: 326px;
-	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+
+	@media ${device.md} {
+	}
+`;
+
+export const AddressContainer = styled('div')`
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
 `;

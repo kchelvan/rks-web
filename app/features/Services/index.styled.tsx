@@ -2,6 +2,7 @@
 
 import styled from 'styled-components';
 import { COLORS } from '../../utils/colors';
+import { device } from '../../utils/breakpoints';
 
 export const Container = styled('div')`
 	display: flex;
@@ -30,6 +31,13 @@ export const ContentContainer = styled('div')`
 	align-items: center;
 	margin-left: auto;
 	margin-right: auto;
+
+	@media ${device.md} {
+		grid-template-columns: repeat(1, 1fr);
+	}
+	@media ${device.lg} {
+		max-width: 900px;
+	}
 `;
 
 export const ServiceTitle = styled('p')`

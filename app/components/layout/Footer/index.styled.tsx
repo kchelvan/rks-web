@@ -7,8 +7,6 @@ export const FooterContainer = styled('div')`
 	display: flex;
 	flex-direction: 'row';
 	justify-content: space-between;
-	padding-left: 32px;
-	padding-right: 32px;
 	padding-top: 16px;
 	padding-bottom: 16px;
 	background-color: ${COLORS.black};
@@ -20,7 +18,8 @@ export const NavContainer = styled('div')`
 `;
 
 export const NavItem = styled(Link)`
-	padding-left: 64px;
 	color: ${COLORS.white};
 	text-decoration: none;
+	padding-left: 32px;
+	padding-right: 32px;
 `;

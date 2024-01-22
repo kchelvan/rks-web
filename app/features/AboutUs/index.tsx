@@ -11,8 +11,10 @@ import Image from 'next/image';
 import AboutUsImage from '../../../public/images/istockphoto-872361244-612x612.jpg';
 import { ABOUT_TEXT } from './const';
 import VisitUsButton from './VisitUsButton';
+import { device } from '../../utils/breakpoints';
 
 const AboutUs = () => {
+	console.log('device', device.md);
 	return (
 		<Container id='about'>
 			<ContentContainer>
@@ -22,8 +24,11 @@ const AboutUs = () => {
 						priority={true}
 						alt='RKS Saloon'
 						fill
-						objectFit='cover'
-						objectPosition='23%'
+						sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+						style={{
+							objectFit: 'cover',
+							objectPosition: '23%',
+						}}
 					/>
 				</ImageContainer>
 				<TextContainer>

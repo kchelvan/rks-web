@@ -30,7 +30,7 @@ const ROUTES = [
 const Header = () => {
 	return (
 		<FooterContainer>
-			<NavItem style={{ paddingLeft: 0 }} href={'/#hero'}>
+			<NavItem href={'/#hero'}>
 				<Text>© RKS Saloon</Text>
 			</NavItem>
 		</FooterContainer>
