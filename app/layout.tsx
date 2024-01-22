@@ -8,9 +8,9 @@ import StyledComponentsRegistry from './lib/registry';
 const raleway = Raleway({ subsets: ['latin'], weight: ['500'] });
 
 export const metadata: Metadata = {
-	title: 'RKS Barber Shop',
+	title: 'RKS Saloon',
 	description:
-		"Discover the ultimate grooming experience at RKS Barbershop, your go-to destination for precision cuts, timeless styles, and unparalleled service. With multiple locations across Toronto, our skilled barbers are committed to crafting the perfect look for every client. Whether you're seeking a classic haircut, a modern fade, or a stylish beard trim, RKS Barbershop blends expertise with artistry. Join us at any of our convenient Toronto locations and experience the epitome of barbering excellence. Elevate your style, embrace the confidence – RKS Barbershop, where your image comes to life.",
+		"Discover the ultimate grooming experience at RKS Saloon, your go-to destination for precision cuts, timeless styles, and unparalleled service. With multiple locations across Toronto, our skilled barbers are committed to crafting the perfect look for every client. Whether you're seeking a classic haircut, a modern fade, or a stylish beard trim, RKS Barbershop blends expertise with artistry. Join us at any of our convenient Toronto locations and experience the epitome of barbering excellence. Elevate your style, embrace the confidence – RKS Saloon, where your image comes to life.",
 };
 
 export default function RootLayout({
