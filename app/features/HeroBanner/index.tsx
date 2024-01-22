@@ -17,7 +17,7 @@ const HeroBanner = () => {
 				<HeroImage
 					priority={true}
 					src={HeroImagePath}
-					alt='RKS Barbers'
+					alt='RKS Saloon'
 					fill
 					objectFit='cover'
 					objectPosition='23%'

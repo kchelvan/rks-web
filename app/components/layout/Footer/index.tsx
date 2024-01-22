@@ -31,7 +31,7 @@ const Header = () => {
 	return (
 		<FooterContainer>
 			<NavItem style={{ paddingLeft: 0 }} href={'/#hero'}>
-				<Text>Footer</Text>
+				<Text>© RKS Saloon</Text>
 			</NavItem>
 		</FooterContainer>
 	);

@@ -1,0 +1,1 @@
+export const ABOUT_TEXT = `Welcome to RKS Saloon – where style meets skill.\n\nOur barbers blend the latest trends with timeless classics for a personalized grooming experience. Step into our modern yet welcoming space, where every haircut tells a story of confidence and style.\n\nIndulge in the RKS Saloon experience – because you deserve to look and feel your best.`;

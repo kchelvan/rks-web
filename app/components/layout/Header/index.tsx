@@ -3,6 +3,7 @@
 import React from 'react';
 import Text from '../../ui/Text';
 import {
+	Link,
 	HeaderContainer,
 	NavContainer,
 	NavItem,
@@ -37,12 +38,12 @@ const ROUTES = [
 const Header = () => {
 	return (
 		<HeaderContainer>
-			<NavItem href={'/#hero'}>
+			<Link href={'/'}>
 				<div style={{ display: 'flex', flexDirection: 'row' }}>
 					<CompanyText>RKS</CompanyText>
 					<CompanySubText>Saloon</CompanySubText>
 				</div>
-			</NavItem>
+			</Link>
 			<NavContainer>
 				{ROUTES?.map((route) => (
 					<NavItem key={route.route} href={route.route}>

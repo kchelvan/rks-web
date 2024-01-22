@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import _Link from 'next/link';
 import styled from 'styled-components';
 import { COLORS } from '../../../utils/colors';
 
@@ -18,7 +18,7 @@ export const NavContainer = styled('div')`
 	flex-direction: row;
 `;
 
-export const NavItem = styled(Link)`
+export const NavItem = styled(_Link)`
 	padding-left: 64px;
 	color: ${COLORS.white};
 	text-decoration: none;
@@ -27,6 +27,13 @@ export const NavItem = styled(Link)`
 		text-decoration: underline;
 		scale: calc(1.15);
 	}
+`;
+
+export const Link = styled(_Link)`
+	padding-left: 64px;
+	color: ${COLORS.white};
+	text-decoration: none;
+	text-align: center;
 `;
 
 export const CompanyText = styled('p')`

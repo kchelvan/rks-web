@@ -38,9 +38,9 @@ export const HeroText = styled('p')`
 `;
 
 const breatheAnimation = keyframes`
- 0% { scale: 100%}
- 10% { scale: 120%};
- 20% { scale: 100%}`;
+ 0% { transform: translateY(0%)}
+ 10% { transform: translateY(25%)};
+ 20% { transform: translateY(0%)}`;
 
 export const ChevronDown = styled(ArrowDownwardIcon)`
 	color: ${COLORS.white};
@@ -50,17 +50,10 @@ export const ChevronDown = styled(ArrowDownwardIcon)`
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 32px;
-	&:hover {
-		transition: all;
-		transition-timing-function: ease-in-out;
-		scale: 120%;
-	}
-	&:not(:hover) {
-		animation-name: ${breatheAnimation};
-		animation-duration: 3s;
-		animation-iteration-count: infinite;
-		animation-timing-function: ease-in-out;
-	}
+	animation-name: ${breatheAnimation};
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
 `;
 
 export const ContentContainer = styled('div')`
