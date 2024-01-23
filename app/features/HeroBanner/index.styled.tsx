@@ -58,16 +58,6 @@ export const ChevronDown = styled(ArrowDownwardIcon)`
 	animation-timing-function: ease-in-out;
 `;
 
-export const StaticChevronDown = styled(ArrowDownwardIcon)`
-	color: ${COLORS.white};
-	font-size: 48px;
-	z-index: 10;
-	display: flex;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 32px;
-`;
-
 export const ContentContainer = styled('div')`
 	width: 100%;
 	height: 100%;

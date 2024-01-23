@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import HeroImagePath from '../../../public/images/HeroBanner.jpg';
 import {
 	Container,
@@ -6,7 +6,6 @@ import {
 	DarkenedBG,
 	HeroText,
 	ContentContainer,
-	StaticChevronDown,
 } from './index.styled';
 import AnimatedChevron from './AnimatedChevron';
 
@@ -29,9 +28,7 @@ const HeroBanner = () => {
 			<ContentContainer>
 				<div />
 				<HeroText>Where Every Cut Tells a Unique Story!</HeroText>
-				<Suspense fallback={<StaticChevronDown />}>
-					<AnimatedChevron />
-				</Suspense>
+				<AnimatedChevron sx={{ fontSize: 48 }} />
 			</ContentContainer>
 		</Container>
 	);

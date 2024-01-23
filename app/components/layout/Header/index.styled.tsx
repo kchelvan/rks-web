@@ -41,7 +41,7 @@ export const Link = styled(_Link)`
 export const CompanyText = styled('p')<{ navMenuOpen: boolean }>`
 	color: ${({ navMenuOpen }) =>
 		navMenuOpen ? COLORS.buttonSecondary : COLORS.buttonPrimary};
-	transition: all 0.3s ease-in;
+	transition: all 0.125s ease-in;
 	text-decoration: none;
 	text-align: center;
 	font-size: xx-large;
@@ -59,7 +59,7 @@ export const CompanyText = styled('p')<{ navMenuOpen: boolean }>`
 
 export const CompanySubText = styled('p')<{ navMenuOpen: boolean }>`
 	color: ${({ navMenuOpen }) => (navMenuOpen ? COLORS.black : COLORS.white)};
-	transition: all 0.3s ease-in;
+	transition: all 0.125s ease-in;
 	text-decoration: none;
 	text-align: center;
 	font-size: large;
