@@ -25,6 +25,7 @@ export const HeaderText = styled('p')`
 	color: ${COLORS.black};
 	font-size: 48px;
 	font-weight: bolder;
+	margin-top: -24px;
 `;
 
 export const ContentContainer = styled('div')`
