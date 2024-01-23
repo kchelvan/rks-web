@@ -8,7 +8,7 @@ import { device } from '../../utils/breakpoints';
 export const Container = styled('div')`
 	display: flex;
 	width: 1280px;
-	min-height: 100dvh;
+	min-height: 100vh;
 	justify-content: center;
 	align-items: center;
 	margin-left: auto;
@@ -50,7 +50,7 @@ export const TextContainer = styled('div')`
 export const ImageContainer = styled('div')`
 	position: relative;
 	width: 45%;
-	height: 70dvh;
+	height: 70vh;
 	margin-top: 0px;
 	transition: all 0.1s ease-out;
 

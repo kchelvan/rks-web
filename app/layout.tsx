@@ -26,7 +26,7 @@ export default function RootLayout({
 				className={raleway.className}
 				style={{
 					height: '100%',
-					minHeight: '100dvh',
+					minHeight: '100vh',
 					backgroundColor: COLORS.pageBackground,
 					margin: 0,
 				}}
