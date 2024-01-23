@@ -158,4 +158,5 @@ export const StyledMenu = styled.nav<{ open: boolean }>`
 export const NavBarItem = styled(_Link)<{ open: boolean }>`
 	width: 100dvw;
 	text-align: center;
+	user-select: none;
 `;

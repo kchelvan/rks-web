@@ -69,3 +69,9 @@ export const ContentContainer = styled('div')`
 	justify-content: space-between;
 	align-content: center;
 `;
+
+export const AnimatedChevronContainer = styled('div')`
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+`;

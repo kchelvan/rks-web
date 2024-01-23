@@ -2,7 +2,7 @@
 
 import React, { useContext } from 'react';
 import { useRouter } from 'next/navigation';
-import { ChevronDown } from './index.styled';
+import { AnimatedChevronContainer, ChevronDown } from './index.styled';
 import { NavMenuOpen } from '../../context/NavMenuOpen';
 
 const AnimatedChevron = ({ sx }: any) => {
@@ -11,9 +11,9 @@ const AnimatedChevron = ({ sx }: any) => {
 
 	if (!navMenuOpen)
 		return (
-			<div onClick={() => router.push('/#about')}>
+			<AnimatedChevronContainer onClick={() => router.push('/#about')}>
 				<ChevronDown sx={sx} />
-			</div>
+			</AnimatedChevronContainer>
 		);
 
 	return <div style={{ marginTop: 80 }} />;
