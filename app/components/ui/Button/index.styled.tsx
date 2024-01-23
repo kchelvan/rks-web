@@ -5,6 +5,7 @@ import { COLORS } from '../../../utils/colors';
 
 export const Button = styled('button')`
 	background-color: ${COLORS.buttonPrimary};
+	transition: all 0.2s ease-out;
 	padding-left: 32px;
 	padding-right: 32px;
 	border-radius: 4px;
