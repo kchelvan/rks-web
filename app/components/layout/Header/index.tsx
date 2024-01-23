@@ -9,7 +9,6 @@ import {
 	NavItem,
 	CompanyText,
 	CompanySubText,
-	StyledBurger,
 	StyledMenu,
 	NavBarItem,
 } from './index.styled';
@@ -17,7 +16,7 @@ import Button from '../../ui/Button';
 import { useRouter } from 'next/navigation';
 import { useMediaQuery, useTheme } from '@mui/material';
 import Burger from './Burger';
-import NavMenuOpenContext, { NavMenuOpen } from '../../../context/NavMenuOpen';
+import { NavMenuOpen } from '../../../context/NavMenuOpen';
 
 const ROUTES = [
 	{

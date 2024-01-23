@@ -8,6 +8,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 export const Container = styled('div')`
 	height: 91.5dvh;
+	transition: all 0.1s ease-out;
 `;
 
 export const Text = styled(_Text)`
@@ -22,6 +23,7 @@ export const HeroImage = styled(Image)``;
 export const DarkenedBG = styled('div')`
 	width: 100%;
 	height: 100dvh;
+	transition: all 0.1s ease-out;
 	position: absolute;
 	top: 0;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));

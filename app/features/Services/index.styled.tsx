@@ -14,6 +14,11 @@ export const Container = styled('div')`
 	margin-left: auto;
 	margin-right: auto;
 	background-color: ${COLORS.pageBackground};
+	transition: all 0.1s ease-out;
+
+	@media ${device.md} {
+		padding-bottom: 32px;
+	}
 `;
 
 export const HeaderText = styled('p')`

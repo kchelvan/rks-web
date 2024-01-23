@@ -13,6 +13,7 @@ export const Container = styled('div')`
 	align-items: center;
 	margin-left: auto;
 	margin-right: auto;
+	transition: all 0.1s ease-out;
 
 	@media ${device.md} {
 		width: 100%;
@@ -51,6 +52,7 @@ export const ImageContainer = styled('div')`
 	width: 45%;
 	height: 70dvh;
 	margin-top: 0px;
+	transition: all 0.1s ease-out;
 
 	@media ${device.md} {
 		width: 90dvw;

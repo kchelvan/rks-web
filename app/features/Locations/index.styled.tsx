@@ -14,6 +14,7 @@ export const Container = styled('div')`
 	margin-left: auto;
 	margin-right: auto;
 	background-color: ${COLORS.secondary + '40'};
+	transition: all 0.1s ease-out;
 `;
 
 export const HeaderText = styled('p')`
@@ -80,4 +81,8 @@ export const AddressContainer = styled('div')`
 	align-items: center;
 	margin-left: auto;
 	margin-right: auto;
+
+	@media ${device.md} {
+		padding-bottom: 48px;
+	}
 `;
