@@ -5,10 +5,15 @@ import _Text from '../../components/ui/Text';
 import { COLORS } from '../../utils/colors';
 import Image from 'next/image';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { device } from '../../utils/breakpoints';
 
 export const Container = styled('div')`
 	height: 91.5dvh;
 	transition: all 0.1s ease-out;
+
+	@media ${device.md} {
+		height: 91.5svh;
+	}
 `;
 
 export const Text = styled(_Text)`
@@ -28,6 +33,10 @@ export const DarkenedBG = styled('div')`
 	top: 0;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 	z-index: -10;
+
+	@media ${device.md} {
+		height: 100svh;
+	}
 `;
 
 export const HeroText = styled('p')`
