@@ -4,17 +4,29 @@ import styled from 'styled-components';
 import { COLORS } from '../../utils/colors';
 import { device } from '../../utils/breakpoints';
 
+export const ParentContainer = styled('div')`
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	justify-content: center;
+`;
+
 export const Container = styled('div')`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	min-height: 70vh;
+	height: 70vh;
 	justify-content: center;
 	align-items: center;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: ${COLORS.secondary + '40'};
 	transition: all 0.1s ease-out;
+
+	@media ${device.md} {
+		height: auto;
+		min-height: 70vh;
+	}
 `;
 
 export const HeaderText = styled('p')`
