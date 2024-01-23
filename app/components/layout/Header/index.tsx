@@ -11,6 +11,7 @@ import {
 	CompanySubText,
 	StyledBurger,
 	StyledMenu,
+	NavBarItem,
 } from './index.styled';
 import Button from '../../ui/Button';
 import { useRouter } from 'next/navigation';
@@ -40,13 +41,20 @@ const ROUTES = [
 	},
 ];
 
-const Menu = ({ open }: any) => {
+const Menu = ({ open, setOpen }: any) => {
 	return (
 		<StyledMenu open={open}>
 			{ROUTES?.map((route) => (
-				<NavItem key={route.route} href={route.route}>
-					<Text>{route.label}</Text>
-				</NavItem>
+				<NavBarItem
+					key={route.route}
+					href={route.route}
+					open={open}
+					onClick={() => {
+						setOpen(false);
+					}}
+				>
+					{route.label}
+				</NavBarItem>
 			))}
 		</StyledMenu>
 	);

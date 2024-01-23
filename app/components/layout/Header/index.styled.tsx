@@ -74,7 +74,7 @@ export const StyledBurger = styled.button<{ open: boolean }>`
 	border: none;
 	cursor: pointer;
 	padding: 0;
-	z-index: 10;
+	z-index: 20;
 
 	&:focus {
 		outline: none;
@@ -140,4 +140,9 @@ export const StyledMenu = styled.nav<{ open: boolean }>`
 			color: #343078;
 		}
 	}
+`;
+
+export const NavBarItem = styled(_Link)<{ open: boolean }>`
+	width: 100dvw;
+	text-align: center;
 `;

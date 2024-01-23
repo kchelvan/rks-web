@@ -25,24 +25,25 @@ export const HeaderText = styled('p')`
 export const ContentContainer = styled('div')`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 10px;
+	align-items: flex-start;
 	max-width: 1440px;
-	justify-content: center;
-	align-items: center;
 	margin-left: auto;
 	margin-right: auto;
 
-	@media ${device.md} {
-		grid-template-columns: repeat(1, 1fr);
+	@media ${device.xl} {
+		max-width: 1024px;
 	}
 	@media ${device.lg} {
 		max-width: 900px;
+	}
+	@media ${device.md} {
+		grid-template-columns: repeat(1, 1fr);
 	}
 `;
 
 export const ServiceTitle = styled('p')`
 	color: ${COLORS.black};
-	font-size: 28px;
+	font-size: 24px;
 	font-weight: bolder;
 	text-align: center;
 	margin-bottom: 0;
@@ -61,7 +62,11 @@ export const ServiceDescription = styled('p')`
 	font-size: 16px;
 	text-align: center;
 	white-space: pre-wrap;
-	width: 70%;
+	width: 90%;
+
+	@media ${device.md} {
+		width: 70%;
+	}
 `;
 
 export const ServiceContainer = styled('div')`
@@ -69,4 +74,6 @@ export const ServiceContainer = styled('div')`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding-left: 12px;
+	padding-right: 12px;
 `;

@@ -14,7 +14,6 @@ import VisitUsButton from './VisitUsButton';
 import { device } from '../../utils/breakpoints';
 
 const AboutUs = () => {
-	console.log('device', device.md);
 	return (
 		<Container id='about'>
 			<ContentContainer>

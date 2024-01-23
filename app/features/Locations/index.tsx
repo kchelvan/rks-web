@@ -23,9 +23,8 @@ const Locations = () => {
 								src={location?.image}
 								priority={true}
 								alt='RKS Saloon'
-								width={326}
-								height={200}
-								// sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+								sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+								fill
 								style={{
 									objectFit: 'cover',
 									objectPosition: '23%',

@@ -1,7 +1,7 @@
 import AboutUsImage from '../../../public/images/istockphoto-872361244-612x612.jpg';
 import LocationOne from '../../../public/images/location-1.png';
-import LocationTwo from '../../../public/images/location-2.webp';
-import LocationThree from '../../../public/images/location-3.webp';
+import LocationTwo from '../../../public/images/location-2.png';
+import LocationThree from '../../../public/images/location-3.png';
 
 export const LOCATIONS = [
 	{

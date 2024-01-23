@@ -28,13 +28,17 @@ export const ContentContainer = styled('div')`
 	justify-content: space-between;
 	width: 1280px;
 
+	@media ${device.xl} {
+		flex-direction: row;
+		max-width: 900px;
+	}
+	@media ${device.lg} {
+		flex-direction: row;
+		max-width: 900px;
+	}
 	@media ${device.md} {
 		flex-direction: column;
 		width: 100%;
-	}
-	@media ${device.lg} {
-		flex-direction: column;
-		max-width: 900px;
 	}
 `;
 
@@ -56,8 +60,18 @@ export const LocationText = styled('p')`
 export const LocationImageContainer = styled('div')`
 	margin-left: auto;
 	margin-right: auto;
+	width: 326px;
+	height: 200px;
+	position: relative;
+
+	@media ${device.xl} {
+		width: 250px;
+		height: 200px;
+	}
 
 	@media ${device.md} {
+		width: 90vw;
+		height: 300px;
 	}
 `;
 
