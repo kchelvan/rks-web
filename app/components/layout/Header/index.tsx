@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Text from '../../ui/Text';
 import {
 	Link,
@@ -17,6 +17,7 @@ import Button from '../../ui/Button';
 import { useRouter } from 'next/navigation';
 import { useMediaQuery, useTheme } from '@mui/material';
 import Burger from './Burger';
+import NavMenuOpenContext, { NavMenuOpen } from '../../../context/NavMenuOpen';
 
 const ROUTES = [
 	{
@@ -64,20 +65,27 @@ const Header = () => {
 	const theme = useTheme();
 	const router = useRouter();
 	const isMobileSize = useMediaQuery(theme.breakpoints.down('md'));
-	const [open, setOpen] = useState(false);
+	const { navMenuOpen, setNavMenuOpen }: any = useContext(NavMenuOpen);
 
 	return (
 		<HeaderContainer>
 			<Link href={'/'}>
-				<div style={{ display: 'flex', flexDirection: 'row' }}>
-					<CompanyText>RKS</CompanyText>
-					<CompanySubText>Saloon</CompanySubText>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'row',
+						zIndex: 100,
+						position: 'absolute',
+					}}
+				>
+					<CompanyText navMenuOpen={navMenuOpen}>RKS</CompanyText>
+					<CompanySubText navMenuOpen={navMenuOpen}>Saloon</CompanySubText>
 				</div>
 			</Link>
 			{isMobileSize ? (
 				<div>
-					<Burger open={open} setOpen={setOpen} />
-					<Menu open={open} setOpen={setOpen} />
+					<Burger open={navMenuOpen} setOpen={setNavMenuOpen} />
+					<Menu open={navMenuOpen} setOpen={setNavMenuOpen} />
 				</div>
 			) : (
 				<div>

@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer';
 import { COLORS } from './utils/colors';
 import StyledComponentsRegistry from './lib/registry';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import NavMenuOpenContext from './context/NavMenuOpen';
 
 const raleway = Raleway({ subsets: ['latin'], weight: ['500'] });
 
@@ -31,11 +32,13 @@ export default function RootLayout({
 				}}
 			>
 				<SpeedInsights />
-				<StyledComponentsRegistry>
-					<Header />
-					{children}
-					<Footer />
-				</StyledComponentsRegistry>
+				<NavMenuOpenContext>
+					<StyledComponentsRegistry>
+						<Header />
+						{children}
+						<Footer />
+					</StyledComponentsRegistry>
+				</NavMenuOpenContext>
 			</body>
 		</html>
 	);

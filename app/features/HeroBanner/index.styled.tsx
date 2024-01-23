@@ -35,6 +35,8 @@ export const HeroText = styled('p')`
 	justify-content: center;
 	align-items: center;
 	font-weight: bolder;
+	padding-left: 32px;
+	padding-right: 32px;
 `;
 
 const breatheAnimation = keyframes`

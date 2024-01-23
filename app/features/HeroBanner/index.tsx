@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import HeroImagePath from '../../../public/images/HeroBanner.jpg';
 import {
 	Container,
 	HeroImage,
 	DarkenedBG,
 	HeroText,
-	ChevronDown,
 	ContentContainer,
 } from './index.styled';
+import AnimatedChevron from './AnimatedChevron';
 
 const HeroBanner = () => {
 	return (
@@ -28,7 +28,7 @@ const HeroBanner = () => {
 			<ContentContainer>
 				<div />
 				<HeroText>Where Every Cut Tells a Unique Story!</HeroText>
-				<ChevronDown />
+				<AnimatedChevron />
 			</ContentContainer>
 		</Container>
 	);

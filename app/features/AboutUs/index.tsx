@@ -11,7 +11,6 @@ import Image from 'next/image';
 import AboutUsImage from '../../../public/images/istockphoto-872361244-612x612.jpg';
 import { ABOUT_TEXT } from './const';
 import VisitUsButton from './VisitUsButton';
-import { device } from '../../utils/breakpoints';
 
 const AboutUs = () => {
 	return (

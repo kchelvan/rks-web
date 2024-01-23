@@ -26,8 +26,8 @@ export const NavItem = styled(_Link)`
 	text-align: center;
 	&:hover {
 		text-decoration: underline;
-		scale: calc(1.15);
 	}
+	transition: all 0.1s ease-out;
 `;
 
 export const Link = styled(_Link)`
@@ -38,8 +38,10 @@ export const Link = styled(_Link)`
 	text-align: center;
 `;
 
-export const CompanyText = styled('p')`
-	color: ${COLORS.buttonPrimary};
+export const CompanyText = styled('p')<{ navMenuOpen: boolean }>`
+	color: ${({ navMenuOpen }) =>
+		navMenuOpen ? COLORS.buttonSecondary : COLORS.buttonPrimary};
+	transition: all 0.3s ease-in;
 	text-decoration: none;
 	text-align: center;
 	font-size: xx-large;
@@ -47,18 +49,29 @@ export const CompanyText = styled('p')`
 	padding-left: 0;
 	margin: 0;
 	margin-left: -32px;
-	padding-top: 4px;
+	margin-top: -14px;
+
+	@media ${device.md} {
+		padding-top: 4px;
+		margin-top: 6px;
+	}
 `;
 
-export const CompanySubText = styled('p')`
-	color: ${COLORS.white};
+export const CompanySubText = styled('p')<{ navMenuOpen: boolean }>`
+	color: ${({ navMenuOpen }) => (navMenuOpen ? COLORS.black : COLORS.white)};
+	transition: all 0.3s ease-in;
 	text-decoration: none;
 	text-align: center;
 	font-size: large;
 	align-items: flex-end;
 	margin: 0;
 	margin-left: 4px;
-	padding-top: 16px;
+	margin-top: -2px;
+
+	@media ${device.md} {
+		padding-top: 16px;
+		margin-top: 6px;
+	}
 `;
 
 export const StyledBurger = styled.button<{ open: boolean }>`
