@@ -26,6 +26,10 @@ export const HeaderText = styled('p')`
 	font-size: 48px;
 	font-weight: bolder;
 	margin-top: -24px;
+
+	@media ${device.md} {
+		margin-top: 64px;
+	}
 `;
 
 export const ContentContainer = styled('div')`
