@@ -7,10 +7,10 @@ import Cut_6 from '../../../public/our-work/Cut_6.jpg';
 import Cut_7 from '../../../public/our-work/Cut_7.jpg';
 import Cut_8 from '../../../public/our-work/Cut_8.jpg';
 
-const TESTIMONIALS = [
+export const TESTIMONIALS = [
 	{
 		author: 'Gajevindh Jeyatheesan',
-		testimnoial:
+		testimonial:
 			'Always a great place to go for a reasonably priced and quick cut before any big day! 100% would recommend to anyone. Both barbers are friendly and really know how to glow you up from a 4 to 10.',
 	},
 	{

@@ -5,7 +5,6 @@ import {
 	Locations,
 	OurWork,
 	Services,
-	Testimonials,
 } from './features/types';
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
 			<Locations />
 			<Services />
 			<OurWork />
-			<Testimonials />
 			<ContactUs />
 		</div>
 	);

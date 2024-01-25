@@ -16,7 +16,7 @@ const Services = () => {
 			<HeaderText>Our Services</HeaderText>
 			<ContentContainer>
 				{SERVICES?.map((service) => (
-					<ServiceContainer id={service?.title}>
+					<ServiceContainer key={service?.title} id={service?.title}>
 						<ServiceTitle>{service.title}</ServiceTitle>
 						<ServicePrice>{`$ ${service.price}`}</ServicePrice>
 						<ServiceDescription>{service.description}</ServiceDescription>
