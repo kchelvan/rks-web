@@ -5,16 +5,16 @@ import LocationThree from '../../../public/images/location-3.png';
 
 export const LOCATIONS = [
 	{
-		image: LocationOne,
-		city: 'Scarborough',
-		address: `6055 Steeles Ave E,\nScarborough, ON\nM1X 0A7`,
-		phone: '(416) 439-1334',
-	},
-	{
 		image: LocationTwo,
 		city: 'Scarborough',
 		address: `3852 Finch Ave E,\nScarborough, ON\nM1T 3T9`,
 		phone: '(416) 291-1444',
+	},
+	{
+		image: LocationOne,
+		city: 'Scarborough',
+		address: `6055 Steeles Ave E,\nScarborough, ON\nM1X 0A7`,
+		phone: '(416) 439-1334',
 	},
 	{
 		image: LocationThree,
