@@ -154,28 +154,13 @@ const OurWork = () => {
 		};
 	}, []);
 
-	document.addEventListener('visibilitychange', function (event) {
-		if (document.hidden) {
-			tabFocused && setTabFocused(false);
-		} else {
-			!tabFocused && setTabFocused(true);
-		}
-	});
-	// useEffect(() => {
-	// 	imageOneTimerRef;
-	// }, [imageOneIndex]);
-
-	// useEffect(() => {
-	// 	imageTwoTimerRef;
-	// }, [imageTwoIndex]);
-
-	// useEffect(() => {
-	// 	imageThreeTimerRef;
-	// }, [imageThreeIndex]);
-
-	// useEffect(() => {
-	// 	testimonialTimerRef;
-	// }, [testimonialIndex]);
+	// document.addEventListener('visibilitychange', function (event) {
+	// 	if (document.hidden) {
+	// 		tabFocused && setTabFocused(false);
+	// 	} else {
+	// 		!tabFocused && setTabFocused(true);
+	// 	}
+	// });
 
 	return (
 		<Container id='our-work'>
