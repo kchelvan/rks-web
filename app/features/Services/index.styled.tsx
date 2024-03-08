@@ -34,7 +34,7 @@ export const HeaderText = styled('p')`
 
 export const ContentContainer = styled('div')`
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	align-items: flex-start;
 	max-width: 1440px;
 	margin-left: auto;

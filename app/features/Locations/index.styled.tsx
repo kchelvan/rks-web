@@ -23,6 +23,11 @@ export const Container = styled('div')`
 	background-color: ${COLORS.secondary + '40'};
 	transition: all 0.1s ease-out;
 
+	@media ${device.lg} {
+		height: auto;
+		min-height: 80vh;
+	}
+
 	@media ${device.md} {
 		height: auto;
 		min-height: 70vh;
@@ -39,15 +44,15 @@ export const ContentContainer = styled('div')`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 1280px;
+	width: 1450px;
 
 	@media ${device.xl} {
 		flex-direction: row;
-		max-width: 900px;
+		max-width: 1200px;
 	}
 	@media ${device.lg} {
 		flex-direction: row;
-		max-width: 900px;
+		max-width: 1050px;
 	}
 	@media ${device.md} {
 		flex-direction: column;

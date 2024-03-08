@@ -97,11 +97,12 @@ const Header = () => {
 					</NavContainer>
 				</div>
 			)}
-			{!isMobileSize ? (
+			<div />
+			{/* {!isMobileSize ? (
 				<Button onClick={() => router.push('/#locations')}>
-					<Text>Book Now</Text>
+					<Text>Visit Us</Text>
 				</Button>
-			) : null}
+			) : null} */}
 		</HeaderContainer>
 	);
 };
