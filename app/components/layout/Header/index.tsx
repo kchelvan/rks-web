@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Text from '../../ui/Text';
 import {
 	Link,
@@ -65,6 +65,10 @@ const Header = () => {
 	const router = useRouter();
 	const isMobileSize = useMediaQuery(theme.breakpoints.down('md'));
 	const { navMenuOpen, setNavMenuOpen }: any = useContext(NavMenuOpen);
+
+	const onScroll = () => {
+		setNavMenuOpen(false);
+	};
 
 	return (
 		<HeaderContainer>

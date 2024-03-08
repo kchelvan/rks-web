@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useMediaQuery, useTheme } from '@mui/material';
 import {
 	Text,
 	Image,
@@ -24,6 +25,8 @@ const OurWork = () => {
 	const [imageOneIndex, setImageOneIndex]: any = useState(0);
 	const [imageTwoIndex, setImageTwoIndex]: any = useState(0);
 	const [imageThreeIndex, setImageThreeIndex]: any = useState(0);
+	const theme = useTheme();
+	const isMobileSize = useMediaQuery(theme.breakpoints.down('sm'));
 
 	useEffect(() => {
 		if ('serviceWorker' in navigator) {
@@ -168,7 +171,10 @@ const OurWork = () => {
 			<ContentContainer>
 				<ImageGroup index={0}>
 					<div>
-						{WORK_CARD_ONE?.map((image, index) => {
+						{(isMobileSize
+							? [...WORK_CARD_ONE, ...WORK_CARD_TWO, ...WORK_CARD_THREE]
+							: WORK_CARD_ONE
+						)?.map((image, index) => {
 							return (
 								<ImageContainer
 									visibleIndex={imageOneIndex}
@@ -190,54 +196,58 @@ const OurWork = () => {
 						})}
 					</div>
 				</ImageGroup>
-				<ImageGroup index={1}>
-					<div>
-						{WORK_CARD_TWO?.map((image, index) => {
-							return (
-								<ImageContainer
-									visibleIndex={imageTwoIndex}
-									currentIndex={index}
-								>
-									<Image
-										src={image}
-										alt='RKS Saloon Scarborough'
-										fill
-										sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-										style={{
-											objectFit: 'cover',
-											objectPosition: '40%',
-										}}
-										priority={true}
-									/>
-								</ImageContainer>
-							);
-						})}
-					</div>
-				</ImageGroup>
-				<ImageGroup index={2}>
-					<div>
-						{WORK_CARD_THREE?.map((image, index) => {
-							return (
-								<ImageContainer
-									visibleIndex={imageThreeIndex}
-									currentIndex={index}
-								>
-									<Image
-										src={image}
-										alt='RKS Saloon Scarborough'
-										fill
-										sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-										style={{
-											objectFit: 'cover',
-											objectPosition: '40%',
-										}}
-										priority={true}
-									/>
-								</ImageContainer>
-							);
-						})}
-					</div>
-				</ImageGroup>
+				{!isMobileSize ? (
+					<ImageGroup index={1}>
+						<div>
+							{WORK_CARD_TWO?.map((image, index) => {
+								return (
+									<ImageContainer
+										visibleIndex={imageTwoIndex}
+										currentIndex={index}
+									>
+										<Image
+											src={image}
+											alt='RKS Saloon Scarborough'
+											fill
+											sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+											style={{
+												objectFit: 'cover',
+												objectPosition: '40%',
+											}}
+											priority={true}
+										/>
+									</ImageContainer>
+								);
+							})}
+						</div>
+					</ImageGroup>
+				) : null}
+				{!isMobileSize ? (
+					<ImageGroup index={2}>
+						<div>
+							{WORK_CARD_THREE?.map((image, index) => {
+								return (
+									<ImageContainer
+										visibleIndex={imageThreeIndex}
+										currentIndex={index}
+									>
+										<Image
+											src={image}
+											alt='RKS Saloon Scarborough'
+											fill
+											sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+											style={{
+												objectFit: 'cover',
+												objectPosition: '40%',
+											}}
+											priority={true}
+										/>
+									</ImageContainer>
+								);
+							})}
+						</div>
+					</ImageGroup>
+				) : null}
 			</ContentContainer>
 			<Text>{`"${TESTIMONIALS[testimonialIndex].testimonial}"\n\n${TESTIMONIALS[testimonialIndex].author}`}</Text>
 		</Container>

@@ -50,8 +50,9 @@ export const ImageContainer = styled('div')<{
 	}
 
 	@media ${device.sm} {
-		width: 100px;
-		height: 200px;
+		width: 80vw;
+		height: 400px;
+		transform: translateX(-12%) translateY(-50%);
 	}
 `;
 
