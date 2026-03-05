@@ -1,0 +1,92 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+a {
+	color: inherit;
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+	outline: 2px solid #c41e2a;
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* Skip-to-content link — visible on focus */
+.skip-link:focus {
+	left: 16px !important;
+	position: fixed !important;
+}
+
+::selection {
+	background: rgba(196, 30, 42, 0.15);
+	color: #1a1a1a;
+}
+
+/* ── Performant CSS scroll-reveal (replaces framer-motion whileInView) ── */
+.reveal {
+	opacity: 0;
+	transform: translateY(28px);
+	transition:
+		opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	will-change: opacity, transform;
+}
+
+.reveal.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* stagger delays for children */
+.reveal-delay-1 {
+	transition-delay: 0.08s;
+}
+.reveal-delay-2 {
+	transition-delay: 0.16s;
+}
+.reveal-delay-3 {
+	transition-delay: 0.24s;
+}
+.reveal-delay-4 {
+	transition-delay: 0.32s;
+}
+.reveal-delay-5 {
+	transition-delay: 0.4s;
+}
+
+/* Scrollbar — light */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: #e5e3e0;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #b8b4ae;
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #aaa;
+}

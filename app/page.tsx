@@ -1,23 +1,19 @@
 import {
 	AboutUs,
-	ContactUs,
 	HeroBanner,
 	Locations,
-	OurWork,
 	Services,
 	Testimonials,
 } from './features/types';
 
 export default function Home() {
 	return (
-		<div>
+		<main>
 			<HeroBanner />
 			<AboutUs />
-			<Locations />
 			<Services />
-			<OurWork />
+			<Locations />
 			<Testimonials />
-			<ContactUs />
-		</div>
+		</main>
 	);
 }
