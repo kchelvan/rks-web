@@ -1,8 +1,80 @@
+'use client';
+
 import React from 'react';
-import { Container } from './index.styled';
+import Image from 'next/image';
+import AboutImage from '../../../public/images/istockphoto-872361244-612x612.jpg';
+import {
+	Container,
+	Inner,
+	TextContent,
+	Label,
+	Heading,
+	Divider,
+	Description,
+	StatsRow,
+	StatItem,
+	StatNumber,
+	StatLabel,
+	ImageSide,
+	AccentBox,
+} from './index.styled';
+import { useScrollReveal } from '../../utils/useScrollReveal';
 
 const AboutUs = () => {
-	return <Container> </Container>;
+	const containerRef = useScrollReveal();
+
+	return (
+		<Container id='about' aria-labelledby='about-heading' ref={containerRef}>
+			<Inner>
+				<TextContent>
+					<Label className='reveal'>About Us</Label>
+					<Heading id='about-heading' className='reveal reveal-delay-1'>
+						A Tamil-Owned Legacy
+						<br />
+						in Scarborough
+					</Heading>
+					<Divider className='reveal reveal-delay-2' />
+					<Description className='reveal reveal-delay-2'>
+						For over 20 years, RKS Saloon has been a trusted name in
+						Scarborough. As a proud Tamil-owned business, we bring a tradition
+						of care, precision, and community to every haircut.
+					</Description>
+					<Description className='reveal reveal-delay-3'>
+						Our skilled stylists combine time-tested techniques with modern
+						styles — from classic cuts to sharp fades. Walk in as a customer,
+						leave as family.
+					</Description>
+					<StatsRow className='reveal reveal-delay-4'>
+						<StatItem>
+							<StatNumber>20+</StatNumber>
+							<StatLabel>Years</StatLabel>
+						</StatItem>
+						<StatItem>
+							<StatNumber>4</StatNumber>
+							<StatLabel>Locations</StatLabel>
+						</StatItem>
+						<StatItem>
+							<StatNumber>15K+</StatNumber>
+							<StatLabel>Happy Clients</StatLabel>
+						</StatItem>
+					</StatsRow>
+				</TextContent>
+
+				<div style={{ position: 'relative' }} className='reveal reveal-delay-2'>
+					<ImageSide>
+						<Image
+							src={AboutImage}
+							alt='Professional stylist at RKS Saloon providing a precision haircut'
+							fill
+							style={{ objectFit: 'cover' }}
+							sizes='(max-width: 900px) 100vw, 50vw'
+						/>
+					</ImageSide>
+					<AccentBox />
+				</div>
+			</Inner>
+		</Container>
+	);
 };
 
 export default AboutUs;

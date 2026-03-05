@@ -1,17 +1,7 @@
 import AboutUs from './AboutUs';
-import ContactUs from './Contact';
 import HeroBanner from './HeroBanner';
 import Locations from './Locations';
-import OurWork from './OurWork';
 import Services from './Services';
 import Testimonials from './Testimonials';
 
-export {
-	AboutUs,
-	ContactUs,
-	HeroBanner,
-	Locations,
-	OurWork,
-	Services,
-	Testimonials,
-};
+export { AboutUs, HeroBanner, Locations, Services, Testimonials };
