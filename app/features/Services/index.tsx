@@ -69,7 +69,7 @@ const Services = () => {
 					{SERVICES.map((service, i) => (
 						<div
 							key={service.name}
-							className={`reveal reveal-delay-${Math.min(i + 1, 5)}`}
+							className={`reveal-scale reveal-delay-${Math.min(i + 1, 5)}`}
 							role='listitem'
 						>
 							<ServiceCard>

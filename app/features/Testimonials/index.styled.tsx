@@ -5,13 +5,56 @@ import { COLORS } from '../../utils/colors';
 
 /* ── Keyframes ─────────────────────────────────────────── */
 const slideInUp = keyframes`
-	from { opacity: 0; transform: translateY(32px); }
-	to   { opacity: 1; transform: translateY(0); }
+	from { opacity: 0; transform: translateY(32px); filter: blur(3px); }
+	to   { opacity: 1; transform: translateY(0); filter: blur(0px); }
 `;
 
 const slideOutDown = keyframes`
-	from { opacity: 1; transform: translateY(0); }
-	to   { opacity: 0; transform: translateY(-24px); }
+	from { opacity: 1; transform: translateY(0); filter: blur(0px); }
+	to   { opacity: 0; transform: translateY(-24px); filter: blur(3px); }
+`;
+
+/* Wave hover: replicates the card's real hover state, then eases back.
+   Peaks at 40% for a natural swell, with a gentle ease-out descent. */
+const waveHover = keyframes`
+	0% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-4px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+`;
+
+/* Glow + background brighten that accompanies the lift.
+   Gradual ramp so it feels like a true fade, not a pop. */
+const waveGlow = keyframes`
+	0% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 0.4;
+	}
+	40% {
+		opacity: 1;
+	}
+	70% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 0;
+	}
+`;
+
+/* Border accent fade — same gradual ramp as the glow */
+const waveBorderPulse = keyframes`
+	0%   { opacity: 0; }
+	20%  { opacity: 0.4; }
+	40%  { opacity: 1; }
+	70%  { opacity: 0.5; }
+	100% { opacity: 0; }
 `;
 
 /* ── Layout ────────────────────────────────────────────── */
@@ -80,8 +123,10 @@ export const Grid = styled('div')`
 	grid-template-columns: repeat(3, 1fr);
 	gap: 20px;
 	width: 100%;
-	overflow: hidden;
+	overflow: visible;
 	transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	position: relative;
+	padding: 8px 0;
 
 	@media (max-width: 960px) {
 		grid-template-columns: repeat(2, 1fr);
@@ -95,7 +140,7 @@ export const Grid = styled('div')`
 /* ── Staggered slide animation per card ────────────────── */
 export const CardSlot = styled('div')<{
 	$index: number;
-	$state: 'in' | 'out' | null;
+	$state: 'in' | 'out';
 }>`
 	${({ $state, $index }) => {
 		if ($state === 'out') {
@@ -104,18 +149,11 @@ export const CardSlot = styled('div')<{
 				animation-delay: ${$index * 0.08}s;
 			`;
 		}
-		if ($state === 'in') {
-			return css`
-				animation: ${slideInUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-					forwards;
-				animation-delay: ${$index * 0.12}s;
-				opacity: 0;
-			`;
-		}
-		/* null = settled, no animation running */
+		/* 'in' — slides up and holds at final position via forwards */
 		return css`
-			opacity: 1;
-			transform: translateY(0);
+			animation: ${slideInUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+			animation-delay: ${$index * 0.12}s;
+			opacity: 0;
 		`;
 	}}
 `;
@@ -124,20 +162,85 @@ export const CardSlot = styled('div')<{
 export const TestimonialCard = styled('blockquote')`
 	background: rgba(255, 255, 255, 0.04);
 	border: 1px solid ${COLORS.sectionDarkBorder};
-	border-radius: 12px;
+	border-radius: 14px;
 	padding: 36px 28px;
 	margin: 0;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 	position: relative;
+	cursor: pointer;
 
-	&:hover {
-		border-color: rgba(196, 30, 42, 0.3);
-		background: rgba(255, 255, 255, 0.06);
-		transform: translateY(-3px);
-		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+	/* Gradient border accent */
+	&::before {
+		content: '';
+		position: absolute;
+		inset: -1px;
+		border-radius: 15px;
+		background: linear-gradient(
+			135deg,
+			rgba(196, 30, 42, 0.3),
+			transparent 40%,
+			transparent 60%,
+			rgba(196, 30, 42, 0.15)
+		);
+		opacity: 0;
+		transition: opacity 0.45s ease;
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	/* Glow overlay — animated via opacity for buttery-smooth performance.
+	   Covers the card with the brightened background + shadow look. */
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: 14px;
+		background: rgba(255, 255, 255, 0.035);
+		box-shadow:
+			0 16px 48px rgba(0, 0, 0, 0.25),
+			0 0 40px rgba(196, 30, 42, 0.06);
+		opacity: 0;
+		transition: opacity 0.45s ease;
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	/* Real hover state — only on devices with a true pointer (not touch) */
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			transform: translateY(-4px);
+
+			&::before {
+				opacity: 1;
+			}
+
+			&::after {
+				opacity: 1;
+			}
+		}
+	}
+
+	/* Wave cascade — triggered via .wave-active class added directly to DOM.
+	   Uses CSS custom property --wave-delay for per-card stagger.
+	   This avoids styled-components re-render race conditions entirely. */
+	&.wave-active {
+		transition: none;
+		animation: ${waveHover} 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+		animation-delay: var(--wave-delay, 0s);
+
+		&::before {
+			animation: ${waveBorderPulse} 0.6s linear;
+			animation-delay: var(--wave-delay, 0s);
+		}
+
+		&::after {
+			transition: none;
+			animation: ${waveGlow} 0.6s linear;
+			animation-delay: var(--wave-delay, 0s);
+		}
 	}
 `;
 
@@ -166,16 +269,17 @@ export const AuthorRow = styled('div')`
 `;
 
 export const AuthorAvatar = styled('div')`
-	width: 40px;
-	height: 40px;
+	width: 42px;
+	height: 42px;
 	border-radius: 50%;
-	background: ${COLORS.red};
+	background: linear-gradient(135deg, ${COLORS.red}, ${COLORS.redDark});
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	color: ${COLORS.white};
 	font-weight: 700;
 	font-size: 14px;
+	box-shadow: 0 4px 12px rgba(196, 30, 42, 0.3);
 `;
 
 export const AuthorInfo = styled('div')`

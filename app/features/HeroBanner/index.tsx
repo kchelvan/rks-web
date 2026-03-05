@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import HeroImagePath from '../../../public/images/HeroBanner.jpg';
 import {
@@ -8,18 +8,40 @@ import {
 	HeroImage,
 	DarkenedBG,
 	HeroText,
+	HeroAccentLine,
 	HeroSubtext,
 	HeroLabel,
 	ContentContainer,
 	HeroCTA,
 	ScrollIndicator,
-	ScrollLine,
+	ScrollMouse,
 	ScrollText,
 } from './index.styled';
-import { fadeIn, fadeInUp } from '../../utils/animations';
+import { fadeInUp } from '../../utils/animations';
 import { ChevronDownIcon } from '../../components/ui/Icons';
 
 const HeroBanner = () => {
+	useEffect(() => {
+		const html = document.documentElement;
+
+		const handleScroll = () => {
+			if (window.scrollY < window.innerHeight) {
+				html.classList.remove('show-scrollbar');
+			} else {
+				html.classList.add('show-scrollbar');
+			}
+		};
+
+		// Set initial state
+		handleScroll();
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+			html.classList.remove('show-scrollbar');
+		};
+	}, []);
+
 	return (
 		<Container id='hero' aria-label='Hero banner'>
 			<HeroImage
@@ -36,14 +58,15 @@ const HeroBanner = () => {
 				<motion.div
 					initial='hidden'
 					animate='visible'
-					variants={fadeIn}
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-					}}
+					variants={fadeInUp}
+					custom={0}
+					style={{ display: 'flex', justifyContent: 'center' }}
 				>
-					<HeroLabel>Tamil-Owned · 20+ Years of Service</HeroLabel>
+					<HeroLabel>
+						<span>Tamil-Owned</span>
+						<span className='label-divider' aria-hidden='true' />
+						<span>20+ Years of Service</span>
+					</HeroLabel>
 				</motion.div>
 
 				<motion.div
@@ -58,6 +81,16 @@ const HeroBanner = () => {
 						<br />
 						Saloon
 					</HeroText>
+				</motion.div>
+
+				<motion.div
+					initial='hidden'
+					animate='visible'
+					variants={fadeInUp}
+					custom={1.5}
+					style={{ display: 'flex', justifyContent: 'center' }}
+				>
+					<HeroAccentLine />
 				</motion.div>
 
 				<motion.div
@@ -90,7 +123,7 @@ const HeroBanner = () => {
 						}}
 					>
 						View Locations
-						<ChevronDownIcon size={16} />
+						<ChevronDownIcon size={14} />
 					</HeroCTA>
 				</motion.div>
 			</ContentContainer>
@@ -104,7 +137,7 @@ const HeroBanner = () => {
 				role='button'
 				aria-label='Scroll to about section'
 			>
-				<ScrollLine />
+				<ScrollMouse />
 				<ScrollText>Scroll</ScrollText>
 			</ScrollIndicator>
 		</Container>

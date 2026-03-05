@@ -12,7 +12,6 @@ export const Container = styled('section')`
 		${COLORS.surfaceWarm} 100%
 	);
 	position: relative;
-	overflow: hidden;
 
 	@media (max-width: 768px) {
 		padding: 72px 0;
@@ -31,9 +30,10 @@ export const Inner = styled('div')`
 	@media (max-width: 900px) {
 		grid-template-columns: 1fr;
 		gap: 48px;
+		padding: 0 24px;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 480px) {
 		padding: 0 20px;
 	}
 `;
@@ -80,31 +80,31 @@ export const Description = styled('p')`
 `;
 
 export const StatsRow = styled('div')`
-	display: flex;
-	gap: 48px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
 	margin-top: 32px;
-	flex-wrap: wrap;
 
-	@media (max-width: 480px) {
-		gap: 24px;
-		justify-content: center;
+	@media (max-width: 360px) {
+		grid-template-columns: repeat(2, 1fr);
 	}
 `;
 
 export const StatItem = styled('div')`
 	display: flex;
 	flex-direction: column;
-	padding: 20px 24px;
+	padding: 20px 16px;
 	background: rgba(196, 30, 42, 0.03);
-	border-radius: 10px;
+	border-radius: 12px;
 	border: 1px solid ${COLORS.redBorder};
-	transition: all 0.3s ease;
-	min-width: 100px;
+	transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 	align-items: center;
+	cursor: pointer;
 
 	&:hover {
-		background: rgba(196, 30, 42, 0.06);
-		transform: translateY(-2px);
+		background: rgba(196, 30, 42, 0.07);
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(196, 30, 42, 0.08);
 	}
 `;
 
@@ -125,27 +125,37 @@ export const StatLabel = styled('span')`
 	font-size: 13px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
+	text-align: center;
 	margin-top: 8px;
 `;
 
 export const ImageSide = styled('div')`
 	position: relative;
 	aspect-ratio: 4 / 5;
-	border-radius: 8px;
+	border-radius: 12px;
 	overflow: hidden;
-	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
+
+	img {
+		transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	&:hover img {
+		transform: scale(1.04);
+	}
 `;
 
 export const AccentBox = styled('div')`
 	position: absolute;
-	top: -16px;
-	right: -16px;
-	width: 120px;
-	height: 120px;
+	top: -20px;
+	right: -20px;
+	width: 140px;
+	height: 140px;
 	border: 3px solid ${COLORS.red};
-	border-radius: 12px;
-	opacity: 0.15;
+	border-radius: 16px;
+	opacity: 0.12;
 	z-index: -1;
+	transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 
 	@media (max-width: 900px) {
 		display: none;

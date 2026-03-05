@@ -32,7 +32,7 @@ export const FooterGrid = styled('div')`
 export const FooterColumn = styled('div')`
 	display: flex;
 	flex-direction: column;
-	gap: 14px;
+	gap: 4px;
 `;
 
 export const FooterLogo = styled('div')`
@@ -76,26 +76,23 @@ export const FooterLink = styled(Link)`
 	color: rgba(255, 255, 255, 0.45);
 	text-decoration: none;
 	font-size: 14px;
-	transition: color 0.3s ease;
-	position: relative;
-
-	&::after {
-		content: '';
-		position: absolute;
-		bottom: -2px;
-		left: 0;
-		width: 0;
-		height: 1px;
-		background: ${COLORS.red};
-		transition: width 0.3s ease;
-	}
+	display: flex;
+	align-items: center;
+	gap: 0;
+	padding: 6px 0 6px 6px;
+	border-left: 2px solid transparent;
+	border-radius: 2px;
+	transition:
+		color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+		border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+		padding-left 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+		background 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 
 	&:hover {
-		color: ${COLORS.red};
-
-		&::after {
-			width: 100%;
-		}
+		color: rgba(255, 255, 255, 0.92);
+		border-left-color: ${COLORS.red};
+		padding-left: 12px;
+		background: rgba(255, 255, 255, 0.04);
 	}
 `;
 

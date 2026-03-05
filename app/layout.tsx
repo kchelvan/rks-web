@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Raleway } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { COLORS } from './utils/colors';
 import StyledComponentsRegistry from './lib/registry';
 import './globals.css';
 
-const raleway = Raleway({
+const inter = Inter({
 	subsets: ['latin'],
 	weight: ['300', '400', '500', '600', '700', '800'],
 	display: 'swap',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 	title:
 		'RKS Saloon | Saloon in Scarborough & GTA | Haircuts, Fades & Grooming',
 	description:
-		'RKS Saloon is a Tamil-owned saloon in Scarborough with over 20 years of service. Offering precision haircuts, skin fades, beard trims, and grooming across the GTA. Locations in Scarborough and Markham. Call (416) 291-1444.',
+		'RKS Saloon is a Tamil-owned saloon in the GTA with over 20 years of service. Offering precision haircuts, skin fades, beard trims, and grooming across the GTA. Locations in Scarborough and Markham. Call (416) 291-1444.',
 	keywords: [
 		'saloon Scarborough',
 		'haircut Scarborough',
@@ -164,13 +164,12 @@ export default function RootLayout({
 				/>
 			</head>
 			<body
-				className={raleway.className}
+				className={inter.className}
 				style={{
 					height: '100%',
 					minHeight: '100dvh',
 					backgroundColor: COLORS.pageBackground,
 					margin: 0,
-					overflowX: 'hidden',
 				}}
 			>
 				<StyledComponentsRegistry>
