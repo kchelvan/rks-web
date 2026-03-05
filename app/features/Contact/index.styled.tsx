@@ -88,7 +88,10 @@ export const ContactCard = styled('div')`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition:
+		transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		border-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	position: relative;
 	overflow: hidden;
 

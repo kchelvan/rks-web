@@ -5,13 +5,13 @@ import { COLORS } from '../../utils/colors';
 
 /* ── Keyframes ─────────────────────────────────────────── */
 const slideInUp = keyframes`
-	from { opacity: 0; transform: translateY(32px); filter: blur(3px); }
-	to   { opacity: 1; transform: translateY(0); filter: blur(0px); }
+	from { opacity: 0; transform: translateY(32px); }
+	to   { opacity: 1; transform: translateY(0); }
 `;
 
 const slideOutDown = keyframes`
-	from { opacity: 1; transform: translateY(0); filter: blur(0px); }
-	to   { opacity: 0; transform: translateY(-24px); filter: blur(3px); }
+	from { opacity: 1; transform: translateY(0); }
+	to   { opacity: 0; transform: translateY(-24px); }
 `;
 
 /* Wave hover: replicates the card's real hover state, then eases back.
@@ -321,7 +321,9 @@ export const Dot = styled('button')<{ $active: boolean }>`
 	cursor: pointer;
 	background: ${({ $active }) =>
 		$active ? COLORS.red : 'rgba(255, 255, 255, 0.2)'};
-	transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition:
+		width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		background 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	padding: 0;
 
 	&:hover {

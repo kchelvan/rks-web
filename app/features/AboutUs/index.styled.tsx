@@ -97,7 +97,10 @@ export const StatItem = styled('div')`
 	background: rgba(196, 30, 42, 0.03);
 	border-radius: 12px;
 	border: 1px solid ${COLORS.redBorder};
-	transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+	transition:
+		transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+		background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+		box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 	align-items: center;
 	cursor: pointer;
 
@@ -155,7 +158,9 @@ export const AccentBox = styled('div')`
 	border-radius: 16px;
 	opacity: 0.12;
 	z-index: -1;
-	transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	transition:
+		opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 
 	@media (max-width: 900px) {
 		display: none;

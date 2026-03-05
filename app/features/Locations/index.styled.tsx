@@ -90,7 +90,10 @@ export const LocationCard = styled('article')`
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+	transition:
+		transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 	position: relative;
 	cursor: pointer;
 
@@ -197,7 +200,9 @@ export const LocationCTA = styled('a')`
 	text-decoration: none;
 	margin-top: auto;
 	padding-top: 8px;
-	transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+	transition:
+		color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+		gap 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
 	svg {
 		transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);

@@ -86,7 +86,10 @@ export const ServiceCard = styled('div')`
 	display: flex;
 	flex-direction: column;
 	gap: 14px;
-	transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+	transition:
+		transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
@@ -130,7 +133,10 @@ export const ServiceIcon = styled('div')`
 		rgba(196, 30, 42, 0.04)
 	);
 	border-radius: 12px;
-	transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+	transition:
+		background 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 
 	${ServiceCard}:hover & {
 		background: linear-gradient(135deg, ${COLORS.red}, ${COLORS.redDark});
