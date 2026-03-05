@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import {
 	Container,
 	Inner,
@@ -11,7 +12,6 @@ import {
 	LocationsGrid,
 	LocationCard,
 	LocationImageWrapper,
-	LocationPlaceholder,
 	LocationBody,
 	LocationName,
 	LocationAddress,
@@ -22,11 +22,13 @@ import {
 } from './index.styled';
 import { useScrollReveal } from '../../utils/useScrollReveal';
 import {
-	MapPinIcon,
 	PhoneIcon,
 	ClockIcon,
 	ArrowRightIcon,
 } from '../../components/ui/Icons';
+
+const LOCATION_IMAGE =
+	'https://static.where-e.com/Canada/Rks-Saloon-And-Video_ea73cd952a4430c74b891b2238982f3b.jpg';
 
 const LOCATIONS = [
 	{
@@ -86,15 +88,17 @@ const Locations = () => {
 					{LOCATIONS.map((loc, i) => (
 						<div
 							key={loc.address}
-							className={`reveal reveal-delay-${Math.min(i + 1, 5)}`}
+							className={`reveal-scale reveal-delay-${Math.min(i + 1, 5)}`}
 						>
 							<LocationCard aria-label={`${loc.name} location`}>
 								<LocationImageWrapper>
-									{/* Replace LocationPlaceholder with <Image> when photos are ready */}
-									<LocationPlaceholder>
-										<MapPinIcon size={20} aria-hidden='true' />
-										&nbsp;{loc.name}
-									</LocationPlaceholder>
+									<Image
+										src={LOCATION_IMAGE}
+										alt={`RKS Saloon ${loc.name} location`}
+										fill
+										style={{ objectFit: 'cover' }}
+										sizes='(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 25vw'
+									/>
 								</LocationImageWrapper>
 
 								<LocationBody>

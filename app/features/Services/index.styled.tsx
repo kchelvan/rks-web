@@ -81,13 +81,16 @@ export const Grid = styled('div')`
 export const ServiceCard = styled('div')`
 	background: ${COLORS.surface};
 	border: 1px solid ${COLORS.border};
-	border-radius: 12px;
+	border-radius: 14px;
 	padding: 36px 28px;
 	display: flex;
 	flex-direction: column;
 	gap: 14px;
-	transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-	cursor: default;
+	transition:
+		transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+	cursor: pointer;
 	position: relative;
 	overflow: hidden;
 
@@ -101,13 +104,15 @@ export const ServiceCard = styled('div')`
 		background: linear-gradient(90deg, ${COLORS.red}, ${COLORS.redLight});
 		transform: scaleX(0);
 		transform-origin: left;
-		transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
 	&:hover {
-		border-color: ${COLORS.red};
-		transform: translateY(-4px);
-		box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+		border-color: rgba(196, 30, 42, 0.3);
+		transform: translateY(-6px);
+		box-shadow:
+			0 20px 50px rgba(0, 0, 0, 0.08),
+			0 0 0 1px rgba(196, 30, 42, 0.08);
 
 		&::before {
 			transform: scaleX(1);
@@ -116,8 +121,8 @@ export const ServiceCard = styled('div')`
 `;
 
 export const ServiceIcon = styled('div')`
-	width: 48px;
-	height: 48px;
+	width: 50px;
+	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -127,13 +132,16 @@ export const ServiceIcon = styled('div')`
 		rgba(196, 30, 42, 0.1),
 		rgba(196, 30, 42, 0.04)
 	);
-	border-radius: 10px;
-	transition: all 0.3s ease;
+	border-radius: 12px;
+	transition:
+		background 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 
 	${ServiceCard}:hover & {
 		background: linear-gradient(135deg, ${COLORS.red}, ${COLORS.redDark});
 		color: ${COLORS.white};
-		transform: scale(1.05);
+		transform: scale(1.08) rotate(-2deg);
 	}
 `;
 

@@ -22,7 +22,11 @@ export const Button = styled('button')<{ $variant?: 'primary' | 'outline' }>`
 	letter-spacing: 0.5px;
 	cursor: pointer;
 	border-radius: 8px;
-	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition:
+		transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	font-family: inherit;
 	text-decoration: none;
 

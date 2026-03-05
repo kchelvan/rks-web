@@ -1,35 +1,30 @@
 {
-  "name": "rks-web",
-  "version": "0.1.0",
-  "private": true,
-  "engines": {
-    "node": ">=20.x"
-  },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.5",
-    "@mui/material": "^5.15.5",
-    "babel-plugin-styled-components": "^2.1.4",
-    "framer-motion": "^12.34.4",
-    "next": "^14.1.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "snap": "^1.1.0",
-    "styled-components": "^6.1.8"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.0",
-    "typescript": "^5"
-  }
+	"name": "rks-web",
+	"version": "0.1.0",
+	"private": true,
+	"engines": {
+		"node": ">=20.x"
+	},
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"babel-plugin-styled-components": "^2.1.4",
+		"framer-motion": "^12.34.4",
+		"next": "^15.5.12",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
+		"styled-components": "^6.1.8"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"eslint": "^8",
+		"eslint-config-next": "^15.5.12",
+		"typescript": "^5"
+	}
 }

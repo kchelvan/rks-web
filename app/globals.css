@@ -8,6 +8,8 @@ html {
 	scroll-behavior: smooth;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	scrollbar-gutter: stable;
+	overflow-x: hidden;
 }
 
 body {
@@ -46,9 +48,8 @@ a {
 	opacity: 0;
 	transform: translateY(28px);
 	transition:
-		opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-		transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-	will-change: opacity, transform;
+		opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.visible {
@@ -56,37 +57,104 @@ a {
 	transform: translateY(0);
 }
 
-/* stagger delays for children */
-.reveal-delay-1 {
-	transition-delay: 0.08s;
-}
-.reveal-delay-2 {
-	transition-delay: 0.16s;
-}
-.reveal-delay-3 {
-	transition-delay: 0.24s;
-}
-.reveal-delay-4 {
-	transition-delay: 0.32s;
-}
-.reveal-delay-5 {
-	transition-delay: 0.4s;
+/* Direction variants */
+.reveal-left {
+	opacity: 0;
+	transform: translateX(-48px);
+	transition:
+		opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Scrollbar — light */
+.reveal-left.visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.reveal-right {
+	opacity: 0;
+	transform: translateX(48px);
+	transition:
+		opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-right.visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.reveal-scale {
+	opacity: 0;
+	transform: scale(0.92);
+	transition:
+		opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-scale.visible {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* stagger delays for children */
+.reveal-delay-1 {
+	transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+	transition-delay: 0.2s;
+}
+.reveal-delay-3 {
+	transition-delay: 0.3s;
+}
+.reveal-delay-4 {
+	transition-delay: 0.4s;
+}
+.reveal-delay-5 {
+	transition-delay: 0.5s;
+}
+
+/* Scrollbar — fade in/out without layout shift.
+   scrollbar-gutter: stable (set on html above) always reserves the space
+   so no reflow occurs. We fade by transitioning scrollbar-color (standard)
+   and the webkit pseudo-element background colours directly on html. */
+
+/* Default: transparent — hidden while hero is in view */
+html {
+	scrollbar-color: rgba(184, 180, 174, 0) rgba(229, 227, 224, 0);
+	transition: scrollbar-color 0.5s ease;
+}
+
+/* Visible: added by JS once user scrolls past the hero */
+html.show-scrollbar {
+	scrollbar-color: rgba(184, 180, 174, 1) rgba(229, 227, 224, 1);
+}
+
+/* Webkit — sized but transparent by default */
 ::-webkit-scrollbar {
 	width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #e5e3e0;
+	background: rgba(229, 227, 224, 0);
+	transition: background 0.5s ease;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #b8b4ae;
+	background: rgba(184, 180, 174, 0);
 	border-radius: 3px;
+	transition: background 0.5s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
+/* Webkit — opaque once show-scrollbar is active */
+html.show-scrollbar::-webkit-scrollbar-track {
+	background: #e5e3e0;
+}
+
+html.show-scrollbar::-webkit-scrollbar-thumb {
+	background: #b8b4ae;
+}
+
+html.show-scrollbar::-webkit-scrollbar-thumb:hover {
 	background: #aaa;
 }

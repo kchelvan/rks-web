@@ -26,25 +26,25 @@ const AboutUs = () => {
 	return (
 		<Container id='about' aria-labelledby='about-heading' ref={containerRef}>
 			<Inner>
-				<TextContent>
-					<Label className='reveal'>About Us</Label>
-					<Heading id='about-heading' className='reveal reveal-delay-1'>
+				<TextContent className='reveal-left'>
+					<Label>About Us</Label>
+					<Heading id='about-heading'>
 						A Tamil-Owned Legacy
 						<br />
-						in Scarborough
+						in the Greater Toronto Area
 					</Heading>
-					<Divider className='reveal reveal-delay-2' />
-					<Description className='reveal reveal-delay-2'>
-						For over 20 years, RKS Saloon has been a trusted name in
-						Scarborough. As a proud Tamil-owned business, we bring a tradition
+					<Divider />
+					<Description>
+						For over 20 years, RKS Saloon has been a trusted name in the Greater
+						Toronto Area. As a proud Tamil-owned business, we bring a tradition
 						of care, precision, and community to every haircut.
 					</Description>
-					<Description className='reveal reveal-delay-3'>
+					<Description>
 						Our skilled stylists combine time-tested techniques with modern
 						styles — from classic cuts to sharp fades. Walk in as a customer,
 						leave as family.
 					</Description>
-					<StatsRow className='reveal reveal-delay-4'>
+					<StatsRow>
 						<StatItem>
 							<StatNumber>20+</StatNumber>
 							<StatLabel>Years</StatLabel>
@@ -60,7 +60,10 @@ const AboutUs = () => {
 					</StatsRow>
 				</TextContent>
 
-				<div style={{ position: 'relative' }} className='reveal reveal-delay-2'>
+				<div
+					style={{ position: 'relative' }}
+					className='reveal-right reveal-delay-2'
+				>
 					<ImageSide>
 						<Image
 							src={AboutImage}

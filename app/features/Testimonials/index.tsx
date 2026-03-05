@@ -95,8 +95,11 @@ const AUTO_PLAY_MS = 6000;
 const Testimonials = () => {
 	const containerRef = useScrollReveal();
 	const [activePage, setActivePage] = useState(0);
-	const [sliding, setSliding] = useState<'in' | 'out' | null>(null);
+	const [sliding, setSliding] = useState<'in' | 'out'>('in');
+	const hasPlayedInitialWave = useRef(false);
+	const isHoveringRef = useRef(false);
 	const gridRef = useRef<HTMLDivElement>(null);
+	const sectionRef = useRef<HTMLElement>(null);
 	const [gridHeight, setGridHeight] = useState<number | undefined>(undefined);
 
 	// Measure the grid's natural content height once when new cards mount.
@@ -118,6 +121,41 @@ const Testimonials = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [activePage, sliding]);
 
+	// Fire the wave cascade once the section first enters the viewport
+	useEffect(() => {
+		const el = sectionRef.current;
+		if (!el) return;
+
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting && !hasPlayedInitialWave.current) {
+					hasPlayedInitialWave.current = true;
+					// Fire wave with a short delay as cards fade into view
+					setTimeout(() => triggerWave(), 128);
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.25 },
+		);
+
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, []);
+
+	// Add .wave-active to each card inside the grid.
+	// The class is self-cleaning: each card removes it on `animationend`.
+	const triggerWave = useCallback(() => {
+		const grid = gridRef.current;
+		if (!grid) return;
+		const cards = grid.querySelectorAll<HTMLElement>('[data-wave-card]');
+		cards.forEach((card) => {
+			card.classList.remove('wave-active');
+			// Force reflow so removing + re-adding the class restarts the animation
+			void card.offsetWidth;
+			card.classList.add('wave-active');
+		});
+	}, []);
+
 	const goToPage = useCallback(
 		(nextPage: number) => {
 			if (nextPage === activePage) return;
@@ -127,17 +165,19 @@ const Testimonials = () => {
 			setTimeout(() => {
 				setActivePage(nextPage);
 				setSliding('in');
-				// 3. settle
-				setTimeout(() => setSliding(null), 600);
+				// 3. Fire wave with a short delay as cards begin fading in
+				setTimeout(() => triggerWave(), 256);
 			}, 450);
 		},
-		[activePage],
+		[activePage, triggerWave],
 	);
 
-	// Auto-play — loops indefinitely
+	// Auto-play — pauses while user hovers over a card
 	useEffect(() => {
 		const id = setInterval(() => {
-			goToPage((activePage + 1) % TOTAL_PAGES);
+			if (!isHoveringRef.current) {
+				goToPage((activePage + 1) % TOTAL_PAGES);
+			}
 		}, AUTO_PLAY_MS);
 		return () => clearInterval(id);
 	}, [activePage, goToPage]);
@@ -151,7 +191,15 @@ const Testimonials = () => {
 		<Container
 			id='testimonials'
 			aria-labelledby='testimonials-heading'
-			ref={containerRef}
+			ref={(node: HTMLDivElement | null) => {
+				// Feed the scroll-reveal ref
+				(
+					containerRef as React.MutableRefObject<HTMLDivElement | null>
+				).current = node;
+				// Also track for the initial wave observer
+				(sectionRef as React.MutableRefObject<HTMLElement | null>).current =
+					node;
+			}}
 		>
 			<Inner>
 				<HeaderSection>
@@ -164,6 +212,12 @@ const Testimonials = () => {
 				<CarouselWrapper className='reveal reveal-delay-2'>
 					<Grid
 						ref={gridRef}
+						onMouseEnter={() => {
+							isHoveringRef.current = true;
+						}}
+						onMouseLeave={() => {
+							isHoveringRef.current = false;
+						}}
 						style={
 							gridHeight !== undefined ? { height: gridHeight } : undefined
 						}
@@ -174,7 +228,20 @@ const Testimonials = () => {
 								$index={i}
 								$state={sliding}
 							>
-								<TestimonialCard>
+								<TestimonialCard
+									data-wave-card
+									style={
+										{ '--wave-delay': `${i * 0.15}s` } as React.CSSProperties
+									}
+									onAnimationEnd={(e) => {
+										// Only clean up when the card's own animation ends (not pseudo-element bubbles)
+										if (e.target === e.currentTarget) {
+											(e.currentTarget as HTMLElement).classList.remove(
+												'wave-active',
+											);
+										}
+									}}
+								>
 									<QuoteMark aria-hidden='true'>&ldquo;</QuoteMark>
 									<Stars aria-label='5 out of 5 stars'>
 										{[...Array(5)].map((_, j) => (

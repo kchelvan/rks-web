@@ -86,12 +86,16 @@ export const LocationsGrid = styled('div')`
 export const LocationCard = styled('article')`
 	background: ${COLORS.pageBackground};
 	border: 1px solid ${COLORS.border};
-	border-radius: 12px;
+	border-radius: 14px;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition:
+		transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 	position: relative;
+	cursor: pointer;
 
 	&::after {
 		content: '';
@@ -102,13 +106,15 @@ export const LocationCard = styled('article')`
 		height: 3px;
 		background: linear-gradient(90deg, ${COLORS.red}, ${COLORS.redLight});
 		opacity: 0;
-		transition: opacity 0.35s ease;
+		transition: opacity 0.45s ease;
 	}
 
 	&:hover {
-		border-color: ${COLORS.red};
-		transform: translateY(-6px);
-		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+		border-color: rgba(196, 30, 42, 0.3);
+		transform: translateY(-8px);
+		box-shadow:
+			0 24px 56px rgba(0, 0, 0, 0.1),
+			0 0 0 1px rgba(196, 30, 42, 0.06);
 
 		&::after {
 			opacity: 1;
@@ -122,26 +128,14 @@ export const LocationImageWrapper = styled('div')`
 	aspect-ratio: 16 / 10;
 	overflow: hidden;
 	background: ${COLORS.surfaceAlt};
-`;
 
-export const LocationPlaceholder = styled('div')`
-	position: absolute;
-	inset: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
-	background: linear-gradient(
-		145deg,
-		${COLORS.surfaceAlt} 0%,
-		${COLORS.border} 50%,
-		${COLORS.surfaceAlt} 100%
-	);
-	color: ${COLORS.textMuted};
-	font-size: 13px;
-	font-weight: 500;
-	letter-spacing: 1px;
-	text-transform: uppercase;
+	img {
+		transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	${LocationCard}:hover & img {
+		transform: scale(1.06);
+	}
 `;
 
 export const LocationBody = styled('div')`
@@ -206,14 +200,17 @@ export const LocationCTA = styled('a')`
 	text-decoration: none;
 	margin-top: auto;
 	padding-top: 8px;
-	transition: all 0.3s ease;
+	transition:
+		color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+		gap 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
 	svg {
-		transition: transform 0.3s ease;
+		transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
 	&:hover {
 		color: ${COLORS.redDark};
+		gap: 10px;
 
 		svg {
 			transform: translateX(4px);

@@ -31,9 +31,9 @@ export const Bar = styled('header')<{
 		${({ $scrolled, $open }) =>
 			$scrolled || $open ? COLORS.border : 'transparent'};
 	transition:
-		background 0.3s ease,
-		border-color 0.3s ease,
-		backdrop-filter 0.3s ease;
+		background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+		border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+		backdrop-filter 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
 	@media (max-width: 768px) {
 		padding: 0 20px;
@@ -95,8 +95,8 @@ export const DesktopNavItem = styled(Link)<{ $scrolled?: boolean }>`
 	padding: 8px 16px;
 	border-radius: 6px;
 	transition:
-		color 0.2s ease,
-		background 0.2s ease;
+		color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+		background 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 
 	&:hover {
 		color: ${COLORS.red};

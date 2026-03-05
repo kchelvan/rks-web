@@ -3,8 +3,9 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Lightweight IntersectionObserver hook that adds `.visible` to `.reveal` elements.
+ * Lightweight IntersectionObserver hook that adds `.visible` to reveal elements.
  * Replaces framer-motion whileInView — zero JS per frame, pure CSS transitions.
+ * Supports: .reveal, .reveal-left, .reveal-right, .reveal-scale
  */
 export function useScrollReveal() {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -13,7 +14,9 @@ export function useScrollReveal() {
 		const el = containerRef.current;
 		if (!el) return;
 
-		const targets = el.querySelectorAll('.reveal');
+		const targets = el.querySelectorAll(
+			'.reveal, .reveal-left, .reveal-right, .reveal-scale',
+		);
 		if (!targets.length) return;
 
 		const observer = new IntersectionObserver(
@@ -25,7 +28,7 @@ export function useScrollReveal() {
 					}
 				});
 			},
-			{ threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+			{ threshold: 0.12, rootMargin: '0px 0px -60px 0px' },
 		);
 
 		targets.forEach((t) => observer.observe(t));
